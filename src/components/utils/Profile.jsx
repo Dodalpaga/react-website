@@ -21,7 +21,7 @@ import CardOverflow from '@mui/joy/CardOverflow';
 
 import EmailRoundedIcon from '@mui/icons-material/EmailRounded';
 import EditRoundedIcon from '@mui/icons-material/EditRounded';
-import CountrySelector from './utils/CountrySelector';
+import CountrySelector from './CountrySelector';
 
 export default function Profile() {
   return (

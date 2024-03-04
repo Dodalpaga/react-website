@@ -2,7 +2,8 @@ import { Routes, Route } from 'react-router-dom';
 import { Home, Contact, MenuProfile } from './components/pages';
 
 import SignIn from './components/SignIn';
-import Signup from './components/SignUp';
+import SignUp from './components/SignUp';
+import LandingPage from './components/LandingPage';
 import ProtectedRoute from './components/ProtectedRoute';
 import { UserAuthContextProvider } from './context/UserAuthContext';
 
@@ -16,8 +17,9 @@ function App() {
       <CssBaseline />
       <UserAuthContextProvider>
         <Routes>
-          <Route path="/" element={<SignIn />} />
-          <Route path="/signup" element={<Signup />} />
+          <Route path="/" element={<LandingPage />} />
+          <Route path="/signin" element={<SignIn />} />
+          <Route path="/signup" element={<SignUp />} />
           <Route
             path="/home"
             element={

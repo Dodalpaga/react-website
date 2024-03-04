@@ -91,8 +91,8 @@ function SignUp() {
             <Grid container spacing={2}>
               <Grid item xs={12}>
                 <TextField
+                  sx={{ width: '100%' }}
                   required
-                  fullWidth
                   id="email"
                   label="Email Address"
                   name="email"
@@ -102,7 +102,7 @@ function SignUp() {
               <Grid item xs={12}>
                 <TextField
                   required
-                  fullWidth
+                  sx={{ width: '100%' }}
                   name="password"
                   label="Password"
                   type="password"
@@ -113,7 +113,7 @@ function SignUp() {
               <Grid item xs={12}>
                 <TextField
                   required
-                  fullWidth
+                  sx={{ width: '100%' }}
                   name="confirmPassword"
                   label="Confirm password"
                   type="password"
@@ -124,7 +124,7 @@ function SignUp() {
               <Grid item xs={12}>
                 <TextField
                   required
-                  fullWidth
+                  sx={{ width: '100%' }}
                   name="fullName"
                   label="Full Name"
                   type="text"
@@ -134,7 +134,7 @@ function SignUp() {
               <Grid item xs={12}>
                 <TextField
                   required
-                  fullWidth
+                  sx={{ width: '100%' }}
                   name="userName"
                   label="Username"
                   type="text"
@@ -145,7 +145,7 @@ function SignUp() {
                 <TextField
                   InputLabelProps={{ shrink: true }}
                   required
-                  fullWidth
+                  sx={{ width: '100%' }}
                   name="dateOfBirth"
                   label="Birthday"
                   type="date"
@@ -155,7 +155,7 @@ function SignUp() {
               <Grid item xs={12}>
                 <CountrySelector
                   required
-                  fullWidth
+                  sx={{ width: '100%' }}
                   name="country"
                   onChange={(newValue) => {
                     console.log(newValue.label);
@@ -174,9 +174,8 @@ function SignUp() {
             </Grid>
             <Button
               type="submit"
-              fullWidth
               variant="contained"
-              sx={{ mt: 3, mb: 2 }}
+              sx={{ mt: 3, mb: 2, width: '100%' }}
             >
               Sign Up
             </Button>

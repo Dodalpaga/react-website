@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import './css/Navbar.css';
+import '../css/Navbar.css';
 import { Link, NavLink, useNavigate } from 'react-router-dom';
 import { Button } from '@mui/material';
-import { useUserAuth } from '../context/UserAuthContext';
+import { useUserAuth } from '../../context/UserAuthContext';
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);

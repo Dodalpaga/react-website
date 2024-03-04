@@ -1,6 +1,6 @@
 import React from 'react';
 import { CssBaseline } from '@mui/material';
-import NavBar from '../NavBar';
+import NavBar from '../utils/NavBar';
 
 export const Home = () => {
   return (

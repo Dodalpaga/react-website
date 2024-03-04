@@ -9,6 +9,7 @@ nav {
   background-color: #0f172a;
   color: white;
   position: sticky;
+  width: 100%;
   top: 0;
   padding: 0 15px;
   z-index: 1000; /* Adjust the value as needed */

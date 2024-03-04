@@ -1,6 +1,6 @@
 import React from 'react';
-import Profile from '../Profile';
-import NavBar from '../NavBar';
+import Profile from '../utils/Profile';
+import NavBar from '../utils/NavBar';
 
 export function MenuProfile() {
   return (

@@ -1,13 +1,13 @@
-import * as React from 'react';
+import React from 'react';
 import Autocomplete from '@mui/joy/Autocomplete';
 import AutocompleteOption from '@mui/joy/AutocompleteOption';
 import AspectRatio from '@mui/joy/AspectRatio';
-import FormControl, { FormControlProps } from '@mui/joy/FormControl';
+import FormControl from '@mui/joy/FormControl';
 import FormLabel from '@mui/joy/FormLabel';
 import ListItemDecorator from '@mui/joy/ListItemDecorator';
 import Typography from '@mui/joy/Typography';
 
-export default function CountrySelector(props: FormControlProps) {
+export default function CountrySelector(props) {
   const { sx, onChange, ...other } = props; // Extracting onChange from props
   return (
     <FormControl
@@ -51,15 +51,8 @@ export default function CountrySelector(props: FormControlProps) {
   );
 }
 
-interface CountryType {
-  code: string;
-  label: string;
-  phone: string;
-  suggested?: boolean;
-}
-
 // From https://bitbucket.org/atlassian/atlaskit-mk-2/raw/4ad0e56649c3e6c973e226b7efaeb28cb240ccb0/packages/core/select/src/data/countries.js
-const countries: readonly CountryType[] = [
+const countries = [
   { code: 'AD', label: 'Andorra', phone: '376' },
   {
     code: 'AE',

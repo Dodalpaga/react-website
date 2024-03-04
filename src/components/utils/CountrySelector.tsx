@@ -7,8 +7,8 @@ import FormLabel from '@mui/joy/FormLabel';
 import ListItemDecorator from '@mui/joy/ListItemDecorator';
 import Typography from '@mui/joy/Typography';
 
-export default function ContrySelector(props: FormControlProps) {
-  const { sx, ...other } = props;
+export default function CountrySelector(props: FormControlProps) {
+  const { sx, onChange, ...other } = props; // Extracting onChange from props
   return (
     <FormControl
       {...other}
@@ -21,6 +21,7 @@ export default function ContrySelector(props: FormControlProps) {
         isOptionEqualToValue={(option, value) => option.code === value.code}
         defaultValue={{ code: 'TH', label: 'Thailand', phone: '66' }}
         options={countries}
+        onChange={(event, newValue) => onChange(newValue)} // Calling onChange when the value changes
         renderOption={(optionProps, option) => (
           <AutocompleteOption {...optionProps}>
             <ListItemDecorator>

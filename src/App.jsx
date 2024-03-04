@@ -1,8 +1,8 @@
 import { Routes, Route } from 'react-router-dom';
 import { Home, Contact, MenuProfile } from './components/pages';
 
-import Login from './components/Login';
-import Signup from './components/Signup';
+import SignIn from './components/SignIn';
+import Signup from './components/SignUp';
 import ProtectedRoute from './components/ProtectedRoute';
 import { UserAuthContextProvider } from './context/UserAuthContext';
 
@@ -16,7 +16,7 @@ function App() {
       <CssBaseline />
       <UserAuthContextProvider>
         <Routes>
-          <Route path="/" element={<Login />} />
+          <Route path="/" element={<SignIn />} />
           <Route path="/signup" element={<Signup />} />
           <Route
             path="/home"

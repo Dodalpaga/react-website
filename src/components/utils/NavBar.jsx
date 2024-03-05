@@ -35,9 +35,6 @@ export default function Navbar() {
         <li>
           <NavLink to="/profile">Profile</NavLink>
         </li>
-        <li>
-          <NavLink to="/contact">Contact</NavLink>
-        </li>
       </ul>
 
       <div className="d-grid gap-2">

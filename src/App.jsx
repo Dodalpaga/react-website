@@ -1,5 +1,5 @@
 import { Routes, Route } from 'react-router-dom';
-import { Home, Contact, MenuProfile } from './components/pages';
+import { MenuHome, MenuProfile } from './components/pages';
 
 import SignIn from './components/SignIn';
 import SignUp from './components/SignUp';
@@ -20,7 +20,7 @@ function App() {
             path="/home"
             element={
               <ProtectedRoute>
-                <Home />
+                <MenuHome />
               </ProtectedRoute>
             }
           />
@@ -29,14 +29,6 @@ function App() {
             element={
               <ProtectedRoute>
                 <MenuProfile />
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path="/contact"
-            element={
-              <ProtectedRoute>
-                <Contact />
               </ProtectedRoute>
             }
           />

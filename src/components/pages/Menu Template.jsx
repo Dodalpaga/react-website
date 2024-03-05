@@ -4,7 +4,7 @@ import Container from '@mui/joy/Container';
 import NavBar from '../utils/NavBar';
 import '../css/App.css';
 
-export function MenuHome() {
+export function MenuTemplate() {
   return (
     <div
       style={{
@@ -27,7 +27,7 @@ export function MenuHome() {
           flexDirection: 'column',
         }}
       >
-        Home
+        Template
       </Container>
     </div>
   );

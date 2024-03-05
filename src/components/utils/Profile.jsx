@@ -28,12 +28,12 @@ export default function Profile() {
   return (
     <Container
       component="main"
-      fullWidth
       style={{
         display: 'flex',
         flexDirection: 'column',
-        top: '68px',
-        // height: 'calc(100vh - 68px)',
+        alignItems: 'center',
+        textAlign: 'center',
+        justifyContent: 'center',
       }}
     >
       <Box sx={{ px: { xs: 2, md: 6 } }}>

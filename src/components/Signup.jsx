@@ -78,11 +78,12 @@ export default function SignUp() {
       <CssBaseline />
       <Box
         sx={{
-          marginTop: 8,
-          width: '100%',
           display: 'flex',
           flexDirection: 'column',
+          width: '100%',
+          height: '100%',
           alignItems: 'center',
+          marginTop: 8,
         }}
       >
         <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>

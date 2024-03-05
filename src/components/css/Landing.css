@@ -26,15 +26,17 @@
   color: #000;
 }
 
-.formContainer {
+.contactContainer {
   flex-grow: 1;
   padding: 10px;
+  padding-top: 40px;
+  max-height: 50%;
   max-width: 700px;
   margin: 30px auto;
 }
 
 @media (max-width: 600px) {
-  .formContainer {
+  .contactContainer {
     width: 100%;
   }
 }
@@ -55,11 +57,18 @@
   align-items: center;
   justify-content: center;
   background-image: url('../images/bs2.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
 }
 
 .newsletterBox {
   width: 100%;
-  display: flex;
+  flex-grow: 1;
+  padding: 10px;
+  max-height: 50%;
+  max-width: 700px;
+  margin: 30px auto;
   min-height: 300px;
   align-items: center;
   justify-content: center;
@@ -67,12 +76,16 @@
 
 .contact {
   background-image: url('../images/bs2.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  height: 100vh;
 }
 
 .gridContainer {
   display: flex;
   align-items: center;
-  max-width: 1300px;
+  max-width: 90%;
   padding: 50px;
 }
 
@@ -84,6 +97,9 @@
   justify-content: center;
   margin: 30px 0px 50px 0px;
   background-image: url('../images/bs2.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
 }
 
 .aboutUsSubtitle {
@@ -137,10 +153,6 @@
   justify-content: center;
   background-color: #f2f0f1;
   flex-direction: column;
-}
-
-.footerText {
-  padding-bottom: 10px;
 }
 
 .footerDate {

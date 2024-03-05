@@ -3,18 +3,25 @@ import { Box, Typography, Link } from '@mui/material';
 import '../css/Landing.css';
 
 const Footer = () => {
-  const date = new Date().getFullYear();
-
   return (
     <Box sx={{ flexGrow: 1 }} className="footerContainer">
       <Typography className="footerText">
-        Provided by{' '}
-        <Link href="https://appseed.us" target="_blank" underline="none">
-          AppSeed
+        Copyright{' '}
+        <Link
+          target="_blank"
+          href="https://github.com/Dodalpaga"
+          underline="none"
+        >
+          Dodalpaga
         </Link>
       </Typography>
       <Typography className="footerDate">
-        Open-Source Sample - Buit with MUI
+        {'Copyright © '}
+        <Link color="inherit" to="/">
+          Website
+        </Link>{' '}
+        {new Date().getFullYear()}
+        {'.'}
       </Typography>
     </Box>
   );

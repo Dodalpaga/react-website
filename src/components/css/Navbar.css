@@ -15,6 +15,10 @@ nav {
   z-index: 1000; /* Adjust the value as needed */
 }
 
+.transparent-background {
+  background-color: transparent;
+}
+
 nav .title {
   font-size: 1.5rem;
   margin: 1rem;

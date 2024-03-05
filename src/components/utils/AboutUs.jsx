@@ -1,6 +1,6 @@
 import React from 'react';
 import { Grid, Typography, Button, Box } from '@mui/material';
-import bestTeams from '../images/bestTeams.jpg';
+import bs3 from '../images/bs3.jpg';
 import '../css/Landing.css';
 
 const AboutUs = () => {
@@ -8,7 +8,7 @@ const AboutUs = () => {
     <Box className="aboutUsContainer">
       <Grid container spacing={6} className="gridContainer">
         <Grid item xs={12} md={5}>
-          <img src={bestTeams} alt="My Team" className="largeImage" />
+          <img src={bs3} alt="bs3" className="largeImage" />
         </Grid>
 
         <Grid item xs={12} md={6}>

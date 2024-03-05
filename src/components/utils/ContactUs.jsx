@@ -8,10 +8,11 @@ import {
   Grid,
 } from '@mui/material';
 import '../css/Landing.css';
-import myteam from '../images/myteam.jpg';
+import bs3 from '../images/bs3.jpg';
 
 const ContactUs = () => {
   const [email, setEmail] = useState('');
+  const [emailNewsletter, setEmailNewsletter] = useState('');
   const [firstName, setFirstName] = useState('');
   const [subject, setSubject] = useState('');
   const [message, setMessage] = useState('');
@@ -21,10 +22,20 @@ const ContactUs = () => {
     console.log({ email, firstName, subject, message });
   };
 
+  const submitFormNewsletter = (e) => {
+    e.preventDefault();
+    console.log({ emailNewsletter });
+  };
+
   return (
     <section id="contact-section" className="contact">
-      <Box className="formContainer">
-        <Typography variant="h4" className="formHeading">
+      <Box className="contactContainer">
+        <Typography
+          variant="h3"
+          fontWeight={700}
+          className="title"
+          style={{ textAlign: 'center' }}
+        >
           Contact Us
         </Typography>
         <Box className="form" component="form" noValidate autoComplete="off">
@@ -77,28 +88,34 @@ const ContactUs = () => {
         </Box>
       </Box>
       <Box className="newsletterBox">
-        <Grid container spacing={6} className="gridContainer">
-          <Grid item xs={12} md={7}>
-            <Typography variant="h3" fontWeight={700} className="title">
-              Let's scale your business
-            </Typography>
-            <Typography variant="h6" className="subtitle">
-              Hire professionals who will help your business make 10X your
-              previous income. With over 5years experience in Marketing &
-              Business strategy, we are your best client.
-            </Typography>
-            <Button
-              variant="contained"
-              color="primary"
-              sx={{ width: '200px', fontSize: '16px' }}
-            >
-              HIRE US
-            </Button>
-          </Grid>
-          <Grid item xs={12} md={5}>
-            <img src={myteam} alt="My Team" className="largeImage" />
-          </Grid>
-        </Grid>
+        <Typography variant="h3" fontWeight={700} className="title">
+          Want to hear from us ?
+        </Typography>
+        <Typography variant="h6" className="subtitle">
+          Hire professionals who will help your business make 10X your previous
+          income. With over 5years experience in Marketing & Business strategy,
+          we are your best client.
+        </Typography>
+        <Box className="form" component="form" noValidate autoComplete="off">
+          <TextField
+            label="Email"
+            variant="outlined"
+            fullWidth
+            className="inputField"
+            value={email}
+            onChange={(e) => setEmailNewsletter(e.target.value)}
+          />
+
+          <Button
+            variant="contained"
+            type="submit"
+            color="primary"
+            sx={{ fontSize: '16px' }}
+            onClick={submitFormNewsletter}
+          >
+            Subscribe to newsletter
+          </Button>
+        </Box>
       </Box>
     </section>
   );

@@ -1,5 +1,4 @@
 import Hero from './utils/Hero';
-import Newsletter from './utils/Newsletter';
 import Header from './utils/Header';
 import Section from './utils/Section';
 import Testimonial from './utils/Testimonial';

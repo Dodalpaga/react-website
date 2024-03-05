@@ -11,12 +11,8 @@ export default function Header() {
     navigate('/signin');
   };
 
-  const handleSignUp = () => {
-    navigate('/signup');
-  };
-
   return (
-    <nav style={{ position: 'fixed' }}>
+    <nav className="transparent-background" style={{ position: 'fixed' }}>
       <Link to="/" className="title">
         Website
       </Link>
@@ -37,19 +33,23 @@ export default function Header() {
           }}
           variant="contained"
         >
-          Sign In
+          Login
         </Button>
         <Button
-          variant="contained"
-          onClick={handleSignUp}
-          sx={{ width: '100px' }}
+          sx={{ width: '130px', marginRight: '10px' }}
           style={{
             borderRadius: 35,
             backgroundColor: '#EFE4E0',
             color: '#0F172A',
           }}
+          variant="contained"
         >
-          Sign Up
+          <a
+            href="#contact-section"
+            style={{ textDecoration: 'none', width: '200px', color: 'inherit' }}
+          >
+            Contact Us
+          </a>
         </Button>
       </div>
     </nav>

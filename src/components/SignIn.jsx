@@ -13,13 +13,9 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import Snackbar from '@mui/material/Snackbar';
-import MuiAlert from '@mui/material/Alert';
+import Alert from '@mui/material/Alert';
 import GoogleButton from 'react-google-button';
 import Footer from './utils/Footer';
-
-function Alert(props) {
-  return <MuiAlert elevation={6} variant="filled" {...props} />;
-}
 
 export default function Signin() {
   const { user, logIn, googleSignIn } = useUserAuth();
@@ -45,14 +41,14 @@ export default function Signin() {
       } else {
         navigate('/home');
       }
-    } catch (error) {
-      if (error.code === 'auth/invalid-login-credentials') {
+    } catch (err) {
+      if (err.code === 'auth/invalid-login-credentials') {
         setAlertSeverity('error');
-        setAlertMessage('Invalid password : ' + error.message);
+        setAlertMessage('Invalid password : ' + err.message);
         setAlertOpen(true);
       }
       setAlertSeverity('error');
-      setAlertMessage('Invalid email : ' + error.message);
+      setAlertMessage('Invalid email : ' + err.message);
       setAlertOpen(true);
     }
   };
@@ -142,9 +138,9 @@ export default function Signin() {
             </Grid>
           </Grid>
         </Box>
+        <hr />
+        <GoogleButton type="dark" onClick={handleGoogleSignIn} />
       </Box>
-      <hr />
-      <GoogleButton type="light" onClick={handleGoogleSignIn} />
       <Snackbar
         open={alertOpen}
         autoHideDuration={6000}

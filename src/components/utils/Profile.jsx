@@ -29,7 +29,6 @@ export default function Profile() {
     <Container
       component="main"
       fullWidth
-      className="fixedBackgroundLight"
       style={{
         display: 'flex',
         flexDirection: 'column',

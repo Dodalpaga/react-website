@@ -43,7 +43,7 @@ export function UserAuthContextProvider({ children }) {
       setAlertSeverity('error');
       setAlertMessage('Email not valid');
       setAlertOpen(true);
-      navigate('/signin');
+      navigate('/');
     } else {
       createUserWithEmailAndPassword(auth, email, password)
         .then(async (response) => {

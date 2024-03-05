@@ -5,19 +5,9 @@ import '../css/Landing.css';
 const Footer = () => {
   return (
     <Box sx={{ flexGrow: 1 }} className="footerContainer">
-      <Typography className="footerText">
-        Copyright{' '}
-        <Link
-          target="_blank"
-          href="https://github.com/Dodalpaga"
-          underline="none"
-        >
-          Dodalpaga
-        </Link>
-      </Typography>
       <Typography className="footerDate">
         {'Copyright © '}
-        <Link color="inherit" to="/">
+        <Link color="inherit" to="https://github.com/Dodalpaga">
           Website
         </Link>{' '}
         {new Date().getFullYear()}

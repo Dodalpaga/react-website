@@ -4,7 +4,6 @@ import { Link, useNavigate } from 'react-router-dom';
 import { Button } from '@mui/material';
 
 export default function Header() {
-  const [menuOpen, setMenuOpen] = useState(false);
   const navigate = useNavigate();
 
   const handleSignIn = () => {
@@ -13,14 +12,9 @@ export default function Header() {
 
   return (
     <nav className="transparent-background" style={{ position: 'fixed' }}>
-      <Link to="/" className="title">
+      <Link to="/" className="title" style={{ color: 'black' }}>
         Website
       </Link>
-      <div className="menu" onClick={() => setMenuOpen(!menuOpen)}>
-        <span></span>
-        <span></span>
-        <span></span>
-      </div>
 
       <div className="d-grid gap-2">
         <Button

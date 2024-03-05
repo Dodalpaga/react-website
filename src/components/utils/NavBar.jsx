@@ -6,7 +6,7 @@ import { useUserAuth } from '../../context/UserAuthContext';
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
-  const { logOut, user } = useUserAuth();
+  const { logOut } = useUserAuth();
   const navigate = useNavigate();
 
   const handleLogout = async () => {

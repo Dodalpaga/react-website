@@ -3,7 +3,7 @@ import { Grid, Typography, Box } from '@mui/material';
 import EngineeringOutlinedIcon from '@mui/icons-material/EngineeringOutlined';
 import AllInclusiveIcon from '@mui/icons-material/AllInclusive';
 import PaidOutlinedIcon from '@mui/icons-material/PaidOutlined';
-import '../css/Landing.css';
+import '../css/App.css';
 
 const Section = () => {
   const sectionItems = [

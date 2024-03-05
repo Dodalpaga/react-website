@@ -11,7 +11,7 @@ import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
 import CssBaseline from '@mui/material/CssBaseline';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import './css/Landing.css'; // Import the background CSS file
+import './css/App.css'; // Import the background CSS file
 
 const theme = createTheme({
   typography: {

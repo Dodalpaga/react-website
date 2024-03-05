@@ -7,7 +7,7 @@ import {
   Button,
   Grid,
 } from '@mui/material';
-import '../css/Landing.css';
+import '../css/App.css';
 import bs3 from '../images/bs3.jpg';
 
 const ContactUs = () => {
@@ -29,7 +29,7 @@ const ContactUs = () => {
 
   return (
     <section id="contact-section" className="contact">
-      <Box className="contactContainer">
+      <Box className="contactBox">
         <Typography
           variant="h3"
           fontWeight={700}

@@ -43,42 +43,42 @@ export function UserAuthContextProvider({ children }) {
       setAlertSeverity('error');
       setAlertMessage('Email not valid');
       setAlertOpen(true);
-      return;
+      navigate('/signin');
+    } else {
+      createUserWithEmailAndPassword(auth, email, password)
+        .then(async (response) => {
+          const userid = response.user.uid;
+          try {
+            await setDoc(doc(db, 'users', userid), {
+              fullName: fullName,
+              username: userName,
+              email: email,
+              dateOfBirth: dateOfBirth,
+              country: country,
+            });
+          } catch (e) {
+            console.error('Error adding document: ', e);
+          }
+          // send verification mail.
+          sendEmailVerification(auth.currentUser);
+          logOut();
+          navigate('/signin');
+          setAlertSeverity('success');
+          setAlertMessage('Please log in again');
+          setAlertOpen(true);
+        })
+        .catch((error) => {
+          if (error.code === 'auth/email-already-in-use') {
+            setAlertSeverity('error');
+            setAlertMessage('The email address is already in use.');
+            setAlertOpen(true);
+          } else {
+            setAlertSeverity('error');
+            setAlertMessage(error.message);
+            setAlertOpen(true);
+          }
+        });
     }
-    return createUserWithEmailAndPassword(auth, email, password)
-      .then(async (response) => {
-        const userid = response.user.uid;
-        setTimeout(() => {
-          navigate(`/`);
-        }, 3000);
-        try {
-          await setDoc(doc(db, 'users', userid), {
-            fullName: fullName,
-            username: userName,
-            email: email,
-            dateOfBirth: dateOfBirth,
-            country: country,
-          });
-        } catch (e) {
-          console.error('Error adding document: ', e);
-        }
-        // send verification mail.
-        sendEmailVerification(auth.currentUser);
-
-        logOut();
-        navigate('/');
-      })
-      .catch((error) => {
-        if (error.code === 'auth/email-already-in-use') {
-          setAlertSeverity('error');
-          setAlertMessage('The email address is already in use.');
-          setAlertOpen(true);
-        } else {
-          setAlertSeverity('error');
-          setAlertMessage(error.message);
-          setAlertOpen(true);
-        }
-      });
   }
 
   function logOut() {

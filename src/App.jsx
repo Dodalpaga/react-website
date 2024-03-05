@@ -6,15 +6,11 @@ import SignUp from './components/SignUp';
 import LandingPage from './components/LandingPage';
 import ProtectedRoute from './components/ProtectedRoute';
 import { UserAuthContextProvider } from './context/UserAuthContext';
-
-import Container from '@mui/material/Container';
-import { CssBaseline } from '@mui/material';
 import './components/css/App.css';
 
 function App() {
   return (
-    <Container maxWidth={false} style={{ padding: 0 }}>
-      <CssBaseline />
+    <div className="fixedBackgroundLight">
       <UserAuthContextProvider>
         <Routes>
           <Route path="/" element={<LandingPage />} />
@@ -46,7 +42,7 @@ function App() {
           />
         </Routes>
       </UserAuthContextProvider>
-    </Container>
+    </div>
   );
 }
 

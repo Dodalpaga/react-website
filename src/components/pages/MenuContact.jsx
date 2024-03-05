@@ -5,8 +5,8 @@ import NavBar from '../utils/NavBar';
 export const Contact = () => {
   return (
     <>
-      <NavBar />
       <CssBaseline />
+      <NavBar />
       <h1>Contact</h1>
     </>
   );

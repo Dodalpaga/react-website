@@ -1,7 +1,7 @@
 import React from 'react';
 import { Typography, Box, Card, CardContent, Grid } from '@mui/material';
 import { Avatar } from '@mui/material';
-import '../css/Landing.css';
+import '../css/App.css';
 
 const Testimonial = () => {
   const reviews = [
@@ -11,7 +11,7 @@ const Testimonial = () => {
       statement:
         'The team perfectly fit the specialized skill set required. They focused on the most essential features helping us launch the platform eight months faster than planned.',
       image_url:
-        'https://sweta-bs3-website-fm.netlify.app/static/media/avatar-kady.78fc482c.jpg',
+        'https://icon-library.com/images/avatar-icon-images/avatar-icon-images-4.jpg',
       position: 'Software Engineer at Kadex',
     },
     {
@@ -20,7 +20,7 @@ const Testimonial = () => {
       statement:
         'We needed to automate our entire onboarding process. The team came in and built out the whole journey. Since going live, user retention has gone through the roof!',
       image_url:
-        'https://sweta-bs3-website-fm.netlify.app/static/media/avatar-aiysha.e119a0c1.jpg',
+        'https://icon-library.com/images/avatar-icon-images/avatar-icon-images-4.jpg',
       position: 'Product Manager at Google',
     },
     {
@@ -29,7 +29,7 @@ const Testimonial = () => {
       statement:
         'Amazing. Our team helped us build an app that delivered a new experience for hiring a physio. The launch was an instant success with 100k downloads in the first month.',
       image_url:
-        'https://sweta-bs3-website-fm.netlify.app/static/media/avatar-arthur.098c2e26.jpg',
+        'https://icon-library.com/images/avatar-icon-images/avatar-icon-images-4.jpg',
       position: 'Founder of Crypto',
     },
   ];

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Grid, Typography, Button, Box } from '@mui/material';
 import bs3 from '../images/bs3.jpg';
-import '../css/Landing.css';
+import '../css/App.css';
 
 const AboutUs = () => {
   return (

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Grid, Typography, Button, Box } from '@mui/material';
 import logo from '../images/logo-min.png';
-import '../css/Landing.css';
+import '../css/App.css';
 
 const Hero = () => {
   return (

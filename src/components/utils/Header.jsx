@@ -22,7 +22,7 @@ export default function Header() {
           sx={{ width: '100px', marginRight: '10px' }}
           style={{
             borderRadius: 35,
-            backgroundColor: '#EFE4E0',
+            backgroundColor: '#EFE4E0e7',
             color: '#0F172A',
           }}
           variant="contained"
@@ -33,7 +33,7 @@ export default function Header() {
           sx={{ width: '130px', marginRight: '10px' }}
           style={{
             borderRadius: 35,
-            backgroundColor: '#EFE4E0',
+            backgroundColor: '#EFE4E0e7',
             color: '#0F172A',
           }}
           variant="contained"

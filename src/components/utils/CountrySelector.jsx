@@ -16,6 +16,7 @@ export default function CountrySelector(props) {
     >
       <FormLabel>Country</FormLabel>
       <Autocomplete
+        style={{ background: '#ffffff66' }}
         size="sm"
         autoHighlight
         isOptionEqualToValue={(option, value) => option.code === value.code}

@@ -6,6 +6,7 @@ import SignUp from './components/SignUp';
 import LandingPage from './components/LandingPage';
 import ProtectedRoute from './components/ProtectedRoute';
 import { UserAuthContextProvider } from './context/UserAuthContext';
+import Footer from './components/utils/Footer';
 import './components/css/App.css';
 
 function App() {
@@ -34,6 +35,7 @@ function App() {
           />
         </Routes>
       </UserAuthContextProvider>
+      <Footer />
     </div>
   );
 }

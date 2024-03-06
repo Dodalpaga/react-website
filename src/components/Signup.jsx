@@ -188,7 +188,6 @@ export default function SignUp() {
           {alertMessage}
         </Alert>
       </Snackbar>
-      <Footer />
     </Container>
   );
 }

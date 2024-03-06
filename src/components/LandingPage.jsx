@@ -30,7 +30,6 @@ function LandingPage() {
         <AboutUs />
         <Testimonial />
         <ContactUs />
-        <Footer />
       </ThemeProvider>
     </div>
   );

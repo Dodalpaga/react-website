@@ -23,8 +23,9 @@ export function MenuHome() {
         component="main"
         style={{
           display: 'flex',
-          height: '100%',
           flexDirection: 'column',
+          height: '100%',
+          width: '100%',
         }}
       >
         Home

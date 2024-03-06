@@ -1,5 +1,5 @@
 import React from 'react';
-import { CssBaseline } from '@mui/material';
+import { CssBaseline, useTheme } from '@mui/material';
 import AspectRatio from '@mui/joy/AspectRatio';
 import Box from '@mui/joy/Box';
 import Container from '@mui/joy/Container';
@@ -24,20 +24,16 @@ import EmailRoundedIcon from '@mui/icons-material/EmailRounded';
 import EditRoundedIcon from '@mui/icons-material/EditRounded';
 import CountrySelector from '../utils/CountrySelector';
 import NavBar from '../utils/NavBar';
-import Footer from '../utils/Footer';
 import '../css/App.css';
 
 export function MenuProfile() {
+  const theme = useTheme();
   return (
     <div
       style={{
         display: 'flex',
         flexDirection: 'column',
-        alignItems: 'center',
-        textAlign: 'center',
-        justifyContent: 'center',
-        height: '100vh',
-        width: '100vw',
+        minHeight: '100vh',
       }}
     >
       <CssBaseline />
@@ -45,9 +41,8 @@ export function MenuProfile() {
       <Container
         component="main"
         style={{
-          display: 'flex',
-          height: '100%',
-          flexDirection: 'column',
+          flexGrow: 1,
+          padding: theme.spacing(2),
         }}
       >
         <Box sx={{ px: { xs: 2, md: 6 } }}>
@@ -55,37 +50,32 @@ export function MenuProfile() {
             My profile
           </Typography>
         </Box>
-        <Tabs
-          defaultValue={0}
-          sx={{
-            bgcolor: 'transparent',
-          }}
-        >
+        <Tabs defaultValue={0} sx={{ bgcolor: 'transparent' }}>
           <TabList
             tabFlex={1}
-            size="sm"
+            size="small"
             sx={{
               pl: { xs: 0, md: 4 },
               justifyContent: 'left',
               [`&& .${tabClasses.root}`]: {
                 fontWeight: '600',
                 flex: 'initial',
-                color: 'text.tertiary',
+                color: 'text.secondary',
                 [`&.${tabClasses.selected}`]: {
                   bgcolor: 'transparent',
                   color: 'text.primary',
                   '&::after': {
                     height: '2px',
-                    bgcolor: 'primary.500',
+                    bgcolor: 'primary.main',
                   },
                 },
               },
             }}
           >
-            <Tab sx={{ borderRadius: '6px 6px 0 0' }} indicatorInset value={0}>
+            <Tab sx={{ borderRadius: '6px 6px 0 0' }} value={0}>
               Profile
             </Tab>
-            <Tab sx={{ borderRadius: '6px 6px 0 0' }} indicatorInset value={1}>
+            <Tab sx={{ borderRadius: '6px 6px 0 0' }} value={1}>
               Billing
             </Tab>
           </TabList>
@@ -94,31 +84,43 @@ export function MenuProfile() {
               spacing={4}
               sx={{
                 display: 'flex',
+                flexDirection: 'column',
                 maxWidth: '800px',
-                mx: 'auto',
-                px: { xs: 2, md: 6 },
-                py: { xs: 2, md: 3 },
+                margin: '0 auto',
+                padding: theme.spacing(2),
               }}
             >
               <Card>
                 <Box sx={{ mb: 1 }}>
                   <Typography level="title-md">Personal info</Typography>
                   <Typography level="body-sm">
-                    Customize how your profile information will apper to the
+                    Customize how your profile information will appear to the
                     networks.
                   </Typography>
                 </Box>
                 <Divider />
                 <Stack
-                  direction="row"
+                  direction={{ xs: 'column', md: 'row' }} // Stack direction changes based on screen width
                   spacing={3}
-                  sx={{ display: 'flex', my: 1, maxWidth: '100%' }}
                 >
-                  <Stack direction="column" spacing={1}>
+                  <Stack
+                    className="profilePictureStack"
+                    direction="column"
+                    spacing={1}
+                    sx={{
+                      alignItems: 'center',
+                    }}
+                  >
                     <AspectRatio
+                      className="profilePictureAspectRatio"
                       ratio="1"
                       maxHeight={200}
-                      sx={{ flex: 1, minWidth: 120, borderRadius: '100%' }}
+                      sx={{
+                        flex: 1,
+                        minWidth: 120,
+                        maxWidth: 200,
+                        borderRadius: '100%',
+                      }}
                     >
                       <img
                         src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=286"
@@ -134,11 +136,17 @@ export function MenuProfile() {
                       color="neutral"
                       sx={{
                         bgcolor: 'white',
-                        position: 'absolute',
+                        position: 'relative',
                         zIndex: 2,
                         borderRadius: '50%',
-                        left: 100,
-                        top: 170,
+                        left: {
+                          md: '40px',
+                          xs: '40px',
+                        },
+                        top: {
+                          md: '-180px',
+                          xs: '-40px',
+                        },
                         boxShadow: 'sm',
                       }}
                     >
@@ -146,50 +154,47 @@ export function MenuProfile() {
                     </IconButton>
                   </Stack>
                   <Stack
-                    spacing={2}
-                    sx={{
-                      display: 'flex',
-                      flexDirection: 'column',
-                      flexGrow: 1,
-                      maxWidth: '100%',
-                    }}
+                    direction="column"
+                    spacing={1}
+                    sx={{ display: 'flex', my: 1, width: '100%' }}
                   >
-                    <Stack spacing={1}>
-                      <FormLabel>Name</FormLabel>
-                      <FormControl sx={{ display: 'flex', gap: 2 }}>
-                        <Input size="sm" placeholder="First name" />
-                      </FormControl>
-                      <FormControl sx={{ display: 'flex', gap: 2 }}>
-                        <Input
-                          size="sm"
-                          placeholder="Last name"
-                          sx={{ flexGrow: 1 }}
-                        />
-                      </FormControl>
-                    </Stack>
-                    <Stack direction="row" spacing={2}>
-                      <FormControl>
-                        <FormLabel>Role</FormLabel>
-                        <Input size="sm" defaultValue="UI Developer" />
-                      </FormControl>
-                      <FormControl sx={{ flexGrow: 1 }}>
-                        <FormLabel>Email</FormLabel>
-                        <Input
-                          size="sm"
-                          type="email"
-                          startDecorator={<EmailRoundedIcon />}
-                          placeholder="email"
-                          defaultValue="siriwatk@test.com"
-                          sx={{ flexGrow: 1 }}
-                        />
-                      </FormControl>
-                    </Stack>
-                    <div>
+                    <Box>
+                      <Stack direction="column" spacing={1} flex={1}>
+                        <FormLabel>Name</FormLabel>
+                        <FormControl sx={{ display: 'flex', gap: 2 }}>
+                          <Input size="sm" placeholder="First name" />
+                        </FormControl>
+                        <FormControl sx={{ display: 'flex', gap: 2 }}>
+                          <Input
+                            size="sm"
+                            placeholder="Last name"
+                            sx={{ flexGrow: 1 }}
+                          />
+                        </FormControl>
+                      </Stack>
+                      <Stack direction="column" spacing={2} flex={1}>
+                        <FormControl>
+                          <FormLabel>Role</FormLabel>
+                          <Input size="sm" defaultValue="UI Developer" />
+                        </FormControl>
+                        <FormControl>
+                          <FormLabel>Email</FormLabel>
+                          <Input
+                            size="sm"
+                            type="email"
+                            startDecorator={<EmailRoundedIcon />}
+                            placeholder="email"
+                            defaultValue="siriwatk@test.com"
+                            sx={{ flexGrow: 1 }}
+                          />
+                        </FormControl>
+                      </Stack>
+                    </Box>
+                    <FormControl>
                       <CountrySelector />
-                    </div>
+                    </FormControl>
                   </Stack>
                 </Stack>
-
                 <CardOverflow
                   sx={{ borderTop: '1px solid', borderColor: 'divider' }}
                 >
@@ -237,11 +242,13 @@ export function MenuProfile() {
             </Stack>
           </TabPanel>
           <TabPanel value={1}>
-            <b>Billing</b> tab panel
+            <Typography variant="h2" gutterBottom>
+              Billing
+            </Typography>
+            {/* Billing content */}
           </TabPanel>
         </Tabs>
       </Container>
-      <Footer />
     </div>
   );
 }

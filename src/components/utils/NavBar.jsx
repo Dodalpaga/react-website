@@ -35,9 +35,18 @@ export default function Navbar() {
         <li>
           <NavLink to="/profile">Profile</NavLink>
         </li>
+        <li className="logOutButtonMenu">
+          <Button
+            variant="outlined"
+            style={{ margin: '20px 0' }}
+            onClick={handleLogout}
+          >
+            Log out
+          </Button>
+        </li>
       </ul>
 
-      <div className="d-grid gap-2">
+      <div className="d-grid gap-2 logOutButton">
         <Button variant="contained" onClick={handleLogout}>
           Log out
         </Button>

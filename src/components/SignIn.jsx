@@ -151,7 +151,6 @@ export default function Signin() {
           {alertMessage}
         </Alert>
       </Snackbar>
-      <Footer />
     </Container>
   );
 }

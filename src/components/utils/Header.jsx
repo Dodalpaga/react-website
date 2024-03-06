@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import '../css/Header.css';
-import { Link, NavLink, useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Button } from '@mui/material';
 
 export default function Header() {

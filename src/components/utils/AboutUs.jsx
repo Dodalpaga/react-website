@@ -49,7 +49,11 @@ const AboutUs = () => {
           >
             <a
               href="#contact-section"
-              style={{ textDecoration: 'none', color: 'inherit' }}
+              style={{
+                backgroundColor: 'transparent',
+                textDecoration: 'none',
+                color: 'inherit',
+              }}
             >
               CONTACT US
             </a>

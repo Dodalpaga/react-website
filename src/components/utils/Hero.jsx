@@ -6,26 +6,25 @@ import '../css/App.css';
 const Hero = () => {
   return (
     <Box className="heroBox">
-      <Grid container spacing={6} className="gridContainer heroContainer">
+      <Grid container spacing={6} className="gridContainer">
         <Grid
           item
-          className="gridItem"
+          className="gridItem gridItemText"
           xs={12}
           md={5}
           style={{ padding: '0 20px 0 0' }}
         >
           <Typography variant="h3" fontWeight={700} className="title">
-            Let's scale your business
+            Lorem Ipsum
           </Typography>
           <Typography variant="h6" className="subtitle">
-            Hire professionals who will help your business make 10X your
-            previous income. With over 5years experience in Marketing & Business
-            strategy, we are your best client.
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua.
           </Typography>
         </Grid>
         <Grid
           item
-          className="gridItem"
+          className="gridItem gridItemImage"
           xs={12}
           md={7}
           style={{ padding: '0 0 0 20px' }}

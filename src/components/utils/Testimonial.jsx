@@ -9,7 +9,7 @@ const Testimonial = () => {
       id: 1,
       name: 'Karl Brighton',
       statement:
-        'The team perfectly fit the specialized skill set required. They focused on the most essential features helping us launch the platform eight months faster than planned.',
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
       image_url:
         'https://icon-library.com/images/avatar-icon-images/avatar-icon-images-4.jpg',
       position: 'Software Engineer at Kadex',
@@ -18,7 +18,7 @@ const Testimonial = () => {
       id: 2,
       name: 'Krishna Bells',
       statement:
-        'We needed to automate our entire onboarding process. The team came in and built out the whole journey. Since going live, user retention has gone through the roof!',
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
       image_url:
         'https://icon-library.com/images/avatar-icon-images/avatar-icon-images-4.jpg',
       position: 'Product Manager at Google',
@@ -27,7 +27,7 @@ const Testimonial = () => {
       id: 3,
       name: 'Ben Spiff',
       statement:
-        'Amazing. Our team helped us build an app that delivered a new experience for hiring a physio. The launch was an instant success with 100k downloads in the first month.',
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
       image_url:
         'https://icon-library.com/images/avatar-icon-images/avatar-icon-images-4.jpg',
       position: 'Founder of Crypto',

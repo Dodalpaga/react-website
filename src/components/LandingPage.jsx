@@ -3,6 +3,7 @@ import Header from './utils/Header';
 import Section from './utils/Section';
 import Testimonial from './utils/Testimonial';
 import ContactUs from './utils/ContactUs';
+import Newsletter from './utils/Newsletter';
 import AboutUs from './utils/AboutUs';
 import '@fontsource/roboto/300.css';
 import '@fontsource/roboto/400.css';
@@ -29,6 +30,7 @@ function LandingPage() {
         <AboutUs />
         <Testimonial />
         <ContactUs />
+        <Newsletter />
       </ThemeProvider>
     </div>
   );

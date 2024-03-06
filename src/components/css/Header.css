@@ -13,7 +13,7 @@ nav {
   background-color: transparent;
   justify-content: space-between;
   align-items: center;
-  color: white;
+  color: #f0e4e0;
   position: sticky;
   width: 100%;
   height: 68px;
@@ -45,14 +45,14 @@ nav ul li {
 nav ul li a {
   display: block;
   text-decoration: none;
-  color: white;
+  color: #f0e4e0;
   padding: 0.5rem;
   margin: 0 0.5rem;
   border-radius: 0.5rem;
 }
 
-nav ul li a:not(.active):hover {
-  background-color: #172554;
+nav ul li .btn a:hover {
+  background-color: #f0e4e0;
 }
 
 nav .menu {

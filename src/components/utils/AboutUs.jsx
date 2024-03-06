@@ -5,13 +5,34 @@ import '../css/App.css';
 
 const AboutUs = () => {
   return (
-    <Box className="aboutUsContainer">
+    <Box className="aboutBox">
       <Grid container spacing={6} className="gridContainer">
-        <Grid item xs={12} md={5}>
-          <img src={bs3} alt="bs3" className="largeImage" />
+        <Grid
+          item
+          xs={12}
+          md={5}
+          className="gridItem"
+          style={{ padding: '0 20px 0 0' }}
+        >
+          <img
+            src={bs3}
+            alt="bs3"
+            style={{
+              width: '100%',
+              height: '100%',
+              objectFit: 'contain',
+              overflow: 'hidden',
+            }}
+          />
         </Grid>
 
-        <Grid item xs={12} md={6}>
+        <Grid
+          item
+          xs={12}
+          md={7}
+          className="gridItem"
+          style={{ padding: '0 0 0 20px' }}
+        >
           <Typography variant="h3" fontWeight={700} className="title">
             We build, We revive
           </Typography>

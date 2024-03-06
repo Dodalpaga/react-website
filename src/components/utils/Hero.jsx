@@ -1,13 +1,19 @@
 import React from 'react';
-import { Grid, Typography, Button, Box } from '@mui/material';
+import { Grid, Typography, Box } from '@mui/material';
 import logo from '../images/logo-min.png';
 import '../css/App.css';
 
 const Hero = () => {
   return (
     <Box className="heroBox">
-      <Grid container spacing={6} className="gridContainer">
-        <Grid item xs={12} md={5}>
+      <Grid container spacing={6} className="gridContainer heroContainer">
+        <Grid
+          item
+          className="gridItem"
+          xs={12}
+          md={5}
+          style={{ padding: '0 20px 0 0' }}
+        >
           <Typography variant="h3" fontWeight={700} className="title">
             Let's scale your business
           </Typography>
@@ -17,8 +23,23 @@ const Hero = () => {
             strategy, we are your best client.
           </Typography>
         </Grid>
-        <Grid item xs={12} md={7}>
-          <img src={logo} alt="bs3" className="largeImage" />
+        <Grid
+          item
+          className="gridItem"
+          xs={12}
+          md={7}
+          style={{ padding: '0 0 0 20px' }}
+        >
+          <img
+            src={logo}
+            alt="logo"
+            style={{
+              width: '100%',
+              height: '100%',
+              objectFit: 'contain',
+              overflow: 'hidden',
+            }}
+          />
         </Grid>
       </Grid>
     </Box>

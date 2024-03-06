@@ -1,0 +1,122 @@
+.btn {
+  font-size: medium !important;
+  font-weight: 600 !important;
+  color: #0f172a !important;
+  border-radius: 35px !important;
+  background-color: #efe4e0e7 !important;
+  height: 100% !important;
+}
+
+nav {
+  display: flex;
+  padding: 10px;
+  background-color: transparent;
+  justify-content: space-between;
+  align-items: center;
+  color: white;
+  position: sticky;
+  width: 100%;
+  height: 68px;
+  top: 0;
+  z-index: 1000; /* Adjust the value as needed */
+}
+
+nav .title {
+  color: #0f172a;
+  font-size: 1.5rem;
+  margin: 1rem;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+nav ul {
+  display: flex;
+  padding: 0;
+  margin: 0;
+  height: 100%;
+}
+
+nav ul li {
+  list-style: none;
+  margin: 0 10px;
+  height: 100%;
+}
+
+nav ul li a {
+  display: block;
+  text-decoration: none;
+  color: white;
+  padding: 0.5rem;
+  margin: 0 0.5rem;
+  border-radius: 0.5rem;
+}
+
+nav ul li a:not(.active):hover {
+  background-color: #172554;
+}
+
+nav .menu {
+  display: none;
+  position: absolute;
+  top: 0.75rem;
+  right: 0.5rem;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 2.25rem;
+  height: 2rem;
+}
+
+nav .menu span {
+  height: 0.4rem;
+  width: 100%;
+  background-color: #fff;
+  border-radius: 0.2rem;
+}
+
+@media (max-width: 480px) {
+  nav {
+    padding: 0;
+    flex-direction: column;
+    align-items: flex-start;
+    background-color: #0f172a !important;
+  }
+
+  nav .title {
+    color: #f0e4e0;
+  }
+
+  nav .menu {
+    display: flex;
+  }
+
+  nav ul {
+    height: auto;
+
+    background-color: #0f172a; /* Set initial background color */
+    display: none; /* Hide the menu by default */
+    flex-direction: column;
+    width: 100%;
+    margin-bottom: 0.25rem;
+    transition: display 0.3s ease; /* Adjusted transition duration */
+  }
+
+  nav ul.open {
+    display: flex;
+    transition: display 0.3s ease; /* Adjusted transition duration */
+  }
+
+  nav ul li {
+    width: 100%;
+    text-align: center;
+    margin: 20px 0 !important;
+  }
+
+  .btn {
+    color: #f0e4e0 !important;
+    background-color: #0f172a !important;
+  }
+
+  nav ul li a {
+    margin: 0.2rem 0.5rem;
+  }
+}

@@ -34,27 +34,33 @@ export function MenuProfile() {
   const currentDate = new Date();
   const formattedDate = currentDate.toISOString().slice(0, 10);
   // State variables to store form data
-  const [userData, setUserData] = useState(null); // State to store user data
+  const [bio, setBio] = useState('');
   const [fullName, setFullName] = useState('');
   const [country, setCountry] = useState('');
   const [birthday, setBirthday] = useState('');
 
-  useEffect(() => {
-    // Fetch user data from Firestore
-    async function fetchUserData() {
-      try {
-        const userDataPromise = getUser(user.uid); // Assuming 'G2NXPVyRrUeGj1QfNEyPn4xQCV03' is the user's UID
-        const userData = await userDataPromise;
-        console.log('User data : ', userData);
-        setUserData(userData);
-        setFullName(userData.name);
-        setCountry(userData.country.label);
-        setBirthday(userData.birth);
-      } catch (error) {
-        console.error('Error fetching user data:', error);
-      }
+  async function fetchUserData() {
+    try {
+      const userDataPromise = getUser(user.uid);
+      const userData = await userDataPromise;
+      console.log('User data : ', userData);
+      // Update the input fields with fetched data
+      setFullName(userData.name || ''); // Set default value to empty string if userData.name is undefined
+      setCountry(
+        userData.country || {
+          code: 'XX',
+          label: 'Undefined',
+          suggested: true,
+        }
+      ); // Set default value to France if userData.country is undefined
+      setBirthday(userData.birth || ''); // Set default value to empty string if userData.birth is undefined
+      setBio(userData.bio || '');
+    } catch (error) {
+      console.error('Error fetching user data:', error);
     }
+  }
 
+  useEffect(() => {
     fetchUserData(); // Call the function to fetch user data
   }, []); // Run effect only once on component mount
 
@@ -65,7 +71,20 @@ export function MenuProfile() {
       country: country,
       birth: birthday,
     };
-    return updateUser(user.uid, data);
+    console.log('Set Updated : ', data);
+    await updateUser(user.uid, data);
+    fetchUserData();
+    return;
+  }
+
+  async function updateUserBio() {
+    const data = {
+      bio: bio,
+    };
+    console.log('Set Updated : ', data);
+    await updateUser(user.uid, data);
+    fetchUserData();
+    return;
   }
 
   return (
@@ -184,7 +203,7 @@ export function MenuProfile() {
                           xs: '40px',
                         },
                         top: {
-                          md: '-130px',
+                          md: '-70px',
                           xs: '-40px',
                         },
                         boxShadow: 'sm',
@@ -202,6 +221,7 @@ export function MenuProfile() {
                     <FormControl sx={{ display: 'flex', gap: 2 }}>
                       <Input
                         size="sm"
+                        value={fullName}
                         placeholder="Full name"
                         onChange={(e) => setFullName(e.target.value)}
                       />
@@ -213,6 +233,7 @@ export function MenuProfile() {
                         type="date"
                         startDecorator={<CakeIcon />}
                         placeholder="birthday"
+                        value={birthday}
                         onChange={(e) => setBirthday(e.target.value)}
                         slotProps={{
                           input: {
@@ -228,6 +249,7 @@ export function MenuProfile() {
                         onChange={(country) => {
                           setCountry(country);
                         }}
+                        value={country}
                       />
                     </FormControl>
                   </Stack>
@@ -257,7 +279,9 @@ export function MenuProfile() {
                     size="sm"
                     minRows={4}
                     sx={{ mt: 1.5 }}
-                    defaultValue="I'm a software developer based in Bangkok, Thailand. My goal is to solve UI problems with neat CSS without using too much JavaScript."
+                    defaultValue=""
+                    placeholder="Write a short introduction to be displayed on your profile"
+                    onChange={(e) => setBio(e.target.value)}
                   />
                   <FormHelperText sx={{ mt: 0.75, fontSize: 'xs' }}>
                     275 characters left
@@ -270,7 +294,7 @@ export function MenuProfile() {
                     <Button size="sm" variant="outlined" color="neutral">
                       Cancel
                     </Button>
-                    <Button size="sm" variant="solid">
+                    <Button size="sm" variant="solid" onClick={updateUserBio}>
                       Save
                     </Button>
                   </CardActions>

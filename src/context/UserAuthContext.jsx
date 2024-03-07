@@ -32,7 +32,6 @@ export function UserAuthContextProvider({ children }) {
       photoUrl: user.photoURL,
       country: '',
       birth: '',
-      phone: '',
       bio: '',
     };
   };
@@ -99,7 +98,40 @@ export function UserAuthContextProvider({ children }) {
 
   function googleSignIn() {
     const googleAuthProvider = new GoogleAuthProvider();
-    return signInWithPopup(auth, googleAuthProvider);
+    return signInWithPopup(auth, googleAuthProvider)
+      .then(async (result) => {
+        const user = result.user;
+        // Extract user information from Google credential
+        const userData = {
+          uid: user.uid,
+          email: user.email,
+          name: user.displayName,
+          // You can extract more information like user photoURL, etc., if needed
+        };
+
+        console.log('Google data processed : ', userData);
+
+        // Update userData or perform any necessary actions with the retrieved user data
+        // For example:
+        createUser(userData.uid, userData);
+        updateUser(userData.uid, {
+          name: userData.name,
+          email: userData.email,
+          uid: userData.uid,
+          country: '',
+          birth: '',
+          bio: '',
+          photoUrl: user.photoURL,
+        });
+
+        // send verification mail.
+        sendEmailVerification(auth.currentUser);
+        // Continue with any other necessary actions
+      })
+      .catch((error) => {
+        // Handle errors
+        console.error('Error signing in with Google:', error);
+      });
   }
 
   useEffect(() => {

@@ -1,4 +1,3 @@
-import React from 'react';
 import Autocomplete from '@mui/joy/Autocomplete';
 import AutocompleteOption from '@mui/joy/AutocompleteOption';
 import AspectRatio from '@mui/joy/AspectRatio';
@@ -6,9 +5,10 @@ import FormControl from '@mui/joy/FormControl';
 import FormLabel from '@mui/joy/FormLabel';
 import ListItemDecorator from '@mui/joy/ListItemDecorator';
 import Typography from '@mui/joy/Typography';
+import React from 'react';
 
 export default function CountrySelector(props) {
-  const { sx, onChange, ...other } = props; // Extracting onChange from props
+  const { sx, onChange, value, ...other } = props; // Extracting onChange from props
   return (
     <FormControl
       {...other}
@@ -27,6 +27,7 @@ export default function CountrySelector(props) {
           suggested: true,
         }}
         options={countries}
+        value={value}
         onChange={(event, newValue) => onChange(newValue)} // Calling onChange when the value changes
         renderOption={(optionProps, option) => (
           <AutocompleteOption {...optionProps}>
@@ -35,8 +36,16 @@ export default function CountrySelector(props) {
                 <img
                   loading="lazy"
                   width="20"
-                  srcSet={`https://flagcdn.com/w40/${option.code.toLowerCase()}.png 2x`}
-                  src={`https://flagcdn.com/w20/${option.code.toLowerCase()}.png`}
+                  srcSet={
+                    option.code.toLowerCase() !== 'xx'
+                      ? `https://flagcdn.com/w40/${option.code.toLowerCase()}.png 2x`
+                      : 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/OOjs_UI_icon_userAnonymous.svg/1200px-OOjs_UI_icon_userAnonymous.svg.png'
+                  }
+                  src={
+                    option.code.toLowerCase() !== 'xx'
+                      ? `https://flagcdn.com/w20/${option.code.toLowerCase()}.png`
+                      : 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/OOjs_UI_icon_userAnonymous.svg/1200px-OOjs_UI_icon_userAnonymous.svg.png'
+                  }
                   alt=""
                 />
               </AspectRatio>
@@ -59,6 +68,12 @@ export default function CountrySelector(props) {
 
 // From https://bitbucket.org/atlassian/atlaskit-mk-2/raw/4ad0e56649c3e6c973e226b7efaeb28cb240ccb0/packages/core/select/src/data/countries.js
 const countries = [
+  {
+    code: 'XX',
+    label: 'Undefined',
+    phone: 'XX',
+    suggested: true,
+  },
   { code: 'AD', label: 'Andorra', phone: '376' },
   {
     code: 'AE',

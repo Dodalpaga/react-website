@@ -145,7 +145,7 @@ export default function SignUp() {
             sx={{ width: '100%' }}
             name="country"
             onChange={(newValue) => {
-              setCountry(newValue.label);
+              setCountry(newValue);
             }}
           />
           <FormControlLabel

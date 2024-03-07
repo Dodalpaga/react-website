@@ -15,7 +15,6 @@ import Container from '@mui/material/Container';
 import Snackbar from '@mui/material/Snackbar';
 import Alert from '@mui/material/Alert';
 import GoogleButton from 'react-google-button';
-import Footer from './utils/Footer';
 
 export default function Signin() {
   const { user, logIn, googleSignIn } = useUserAuth();
@@ -45,6 +44,11 @@ export default function Signin() {
       if (err.code === 'auth/invalid-login-credentials') {
         setAlertSeverity('error');
         setAlertMessage('Invalid password : ' + err.message);
+        setAlertOpen(true);
+      }
+      if (err.code === 'auth/invalid-email') {
+        setAlertSeverity('error');
+        setAlertMessage('Invalid email : ' + err.message);
         setAlertOpen(true);
       }
       setAlertSeverity('error');

@@ -14,7 +14,6 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import Snackbar from '@mui/material/Snackbar';
 import MuiAlert from '@mui/material/Alert';
-import Footer from './utils/Footer';
 import CountrySelector from './utils/CountrySelector';
 
 function Alert(props) {
@@ -27,7 +26,7 @@ export default function SignUp() {
   const [alertOpen, setAlertOpen] = useState(false);
   const [alertSeverity, setAlertSeverity] = useState('error');
   const [alertMessage, setAlertMessage] = useState('');
-  const [country, setCountry] = useState('Thaïland');
+  const [country, setCountry] = useState('France');
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -42,8 +41,7 @@ export default function SignUp() {
           data.get('email'),
           data.get('password'),
           data.get('fullName'),
-          data.get('userName'),
-          data.get('dateOfBirth'),
+          data.get('birth'),
           country
         );
         navigate('/');
@@ -96,7 +94,7 @@ export default function SignUp() {
           <TextField
             margin="normal"
             required
-            fullWidth
+            sx={{ width: '100%' }}
             id="email"
             label="Email Address"
             name="email"
@@ -105,7 +103,7 @@ export default function SignUp() {
           <TextField
             margin="normal"
             required
-            fullWidth
+            sx={{ width: '100%' }}
             name="password"
             label="Password"
             type="password"
@@ -115,7 +113,7 @@ export default function SignUp() {
           <TextField
             margin="normal"
             required
-            fullWidth
+            sx={{ width: '100%' }}
             name="confirmPassword"
             label="Confirm password"
             type="password"
@@ -125,35 +123,26 @@ export default function SignUp() {
           <TextField
             margin="normal"
             required
-            fullWidth
+            sx={{ width: '100%' }}
             name="fullName"
             label="Full Name"
             type="text"
             id="fullName"
           />
           <TextField
-            margin="normal"
-            required
-            fullWidth
-            name="userName"
-            label="Username"
-            type="text"
-            id="userName"
-          />
-          <TextField
             InputLabelProps={{ shrink: true }}
             margin="normal"
             required
-            fullWidth
-            name="dateOfBirth"
+            sx={{ width: '100%' }}
+            name="birth"
             label="Birthday"
             type="date"
-            id="dateOfBirth"
+            id="birth"
           />
           <CountrySelector
             margin="normal"
             required
-            fullWidth
+            sx={{ width: '100%' }}
             name="country"
             onChange={(newValue) => {
               setCountry(newValue.label);

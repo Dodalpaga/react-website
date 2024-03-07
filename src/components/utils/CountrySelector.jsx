@@ -20,7 +20,12 @@ export default function CountrySelector(props) {
         size="sm"
         autoHighlight
         isOptionEqualToValue={(option, value) => option.code === value.code}
-        defaultValue={{ code: 'TH', label: 'Thailand', phone: '66' }}
+        defaultValue={{
+          code: 'FR',
+          label: 'France',
+          phone: '33',
+          suggested: true,
+        }}
         options={countries}
         onChange={(event, newValue) => onChange(newValue)} // Calling onChange when the value changes
         renderOption={(optionProps, option) => (

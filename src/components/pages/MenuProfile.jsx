@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { CssBaseline, useTheme } from '@mui/material';
 import AspectRatio from '@mui/joy/AspectRatio';
 import Box from '@mui/joy/Box';
@@ -20,14 +20,54 @@ import Tab, { tabClasses } from '@mui/joy/Tab';
 import Card from '@mui/joy/Card';
 import CardActions from '@mui/joy/CardActions';
 import CardOverflow from '@mui/joy/CardOverflow';
-import EmailRoundedIcon from '@mui/icons-material/EmailRounded';
+import CakeIcon from '@mui/icons-material/Cake';
 import EditRoundedIcon from '@mui/icons-material/EditRounded';
 import CountrySelector from '../utils/CountrySelector';
 import NavBar from '../utils/NavBar';
 import '../css/App.css';
+import { useUserAuth } from '../../context/UserAuthContext';
+import { getUser, updateUser } from '../../context/db';
 
 export function MenuProfile() {
+  const { user } = useUserAuth();
   const theme = useTheme();
+  const currentDate = new Date();
+  const formattedDate = currentDate.toISOString().slice(0, 10);
+  // State variables to store form data
+  const [userData, setUserData] = useState(null); // State to store user data
+  const [fullName, setFullName] = useState('');
+  const [country, setCountry] = useState('');
+  const [birthday, setBirthday] = useState('');
+
+  useEffect(() => {
+    // Fetch user data from Firestore
+    async function fetchUserData() {
+      try {
+        const userDataPromise = getUser(user.uid); // Assuming 'G2NXPVyRrUeGj1QfNEyPn4xQCV03' is the user's UID
+        const userData = await userDataPromise;
+        console.log('User data : ', userData);
+        setUserData(userData);
+        setFullName(userData.name);
+        setCountry(userData.country.label);
+        setBirthday(userData.birth);
+      } catch (error) {
+        console.error('Error fetching user data:', error);
+      }
+    }
+
+    fetchUserData(); // Call the function to fetch user data
+  }, []); // Run effect only once on component mount
+
+  // Function to update user data
+  async function updateUserData() {
+    const data = {
+      name: fullName,
+      country: country,
+      birth: birthday,
+    };
+    return updateUser(user.uid, data);
+  }
+
   return (
     <div
       style={{
@@ -123,8 +163,8 @@ export function MenuProfile() {
                       }}
                     >
                       <img
-                        src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=286"
-                        srcSet="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=286&dpr=2 2x"
+                        src={user.photoURL}
+                        srcSet={user.photoURL}
                         loading="lazy"
                         alt=""
                       />
@@ -144,7 +184,7 @@ export function MenuProfile() {
                           xs: '40px',
                         },
                         top: {
-                          md: '-180px',
+                          md: '-130px',
                           xs: '-40px',
                         },
                         boxShadow: 'sm',
@@ -158,40 +198,37 @@ export function MenuProfile() {
                     spacing={1}
                     sx={{ display: 'flex', my: 1, width: '100%' }}
                   >
-                    <Box>
-                      <Stack direction="column" spacing={1} flex={1}>
-                        <FormLabel>Name</FormLabel>
-                        <FormControl sx={{ display: 'flex', gap: 2 }}>
-                          <Input size="sm" placeholder="First name" />
-                        </FormControl>
-                        <FormControl sx={{ display: 'flex', gap: 2 }}>
-                          <Input
-                            size="sm"
-                            placeholder="Last name"
-                            sx={{ flexGrow: 1 }}
-                          />
-                        </FormControl>
-                      </Stack>
-                      <Stack direction="column" spacing={2} flex={1}>
-                        <FormControl>
-                          <FormLabel>Role</FormLabel>
-                          <Input size="sm" defaultValue="UI Developer" />
-                        </FormControl>
-                        <FormControl>
-                          <FormLabel>Email</FormLabel>
-                          <Input
-                            size="sm"
-                            type="email"
-                            startDecorator={<EmailRoundedIcon />}
-                            placeholder="email"
-                            defaultValue="siriwatk@test.com"
-                            sx={{ flexGrow: 1 }}
-                          />
-                        </FormControl>
-                      </Stack>
-                    </Box>
+                    <FormLabel>Full Name</FormLabel>
+                    <FormControl sx={{ display: 'flex', gap: 2 }}>
+                      <Input
+                        size="sm"
+                        placeholder="Full name"
+                        onChange={(e) => setFullName(e.target.value)}
+                      />
+                    </FormControl>
                     <FormControl>
-                      <CountrySelector />
+                      <FormLabel>Birthday</FormLabel>
+                      <Input
+                        size="sm"
+                        type="date"
+                        startDecorator={<CakeIcon />}
+                        placeholder="birthday"
+                        onChange={(e) => setBirthday(e.target.value)}
+                        slotProps={{
+                          input: {
+                            min: '1900-01-01',
+                            max: formattedDate,
+                          },
+                        }}
+                        sx={{ flexGrow: 1 }}
+                      />
+                    </FormControl>
+                    <FormControl>
+                      <CountrySelector
+                        onChange={(country) => {
+                          setCountry(country);
+                        }}
+                      />
                     </FormControl>
                   </Stack>
                 </Stack>
@@ -202,7 +239,7 @@ export function MenuProfile() {
                     <Button size="sm" variant="outlined" color="neutral">
                       Cancel
                     </Button>
-                    <Button size="sm" variant="solid">
+                    <Button size="sm" variant="solid" onClick={updateUserData}>
                       Save
                     </Button>
                   </CardActions>

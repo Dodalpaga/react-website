@@ -12,8 +12,7 @@ import { auth } from '../firebase';
 import { useNavigate } from 'react-router-dom';
 import Snackbar from '@mui/material/Snackbar';
 import MuiAlert from '@mui/material/Alert';
-import { doc, setDoc } from 'firebase/firestore';
-import { db } from '../firebase';
+import { createUser, updateUser } from './db';
 
 const userAuthContext = createContext();
 
@@ -23,6 +22,20 @@ export function UserAuthContextProvider({ children }) {
   const [alertOpen, setAlertOpen] = useState(false);
   const [alertSeverity, setAlertSeverity] = useState('error');
   const [alertMessage, setAlertMessage] = useState('');
+
+  const formatUser = (user) => {
+    return {
+      uid: user.uid,
+      email: user.email,
+      name: user.displayName,
+      provider: user.providerData[0].providerId,
+      photoUrl: user.photoURL,
+      country: '',
+      birth: '',
+      phone: '',
+      bio: '',
+    };
+  };
 
   const handleAlertClose = (event, reason) => {
     if (reason === 'clickaway') {
@@ -35,7 +48,7 @@ export function UserAuthContextProvider({ children }) {
     return signInWithEmailAndPassword(auth, email, password);
   }
 
-  function signUp(email, password, fullName, userName, dateOfBirth, country) {
+  function signUp(email, password, fullName, birth, country) {
     const emailRegex =
       /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
@@ -47,13 +60,13 @@ export function UserAuthContextProvider({ children }) {
     } else {
       createUserWithEmailAndPassword(auth, email, password)
         .then(async (response) => {
-          const userid = response.user.uid;
+          const user = formatUser(response.user);
+          createUser(user.uid, user);
           try {
-            await setDoc(doc(db, 'users', userid), {
-              fullName: fullName,
-              username: userName,
-              email: email,
-              dateOfBirth: dateOfBirth,
+            await createUser(user.uid, user);
+            await updateUser(user.uid, {
+              name: fullName,
+              birth: birth,
               country: country,
             });
           } catch (e) {
@@ -62,7 +75,6 @@ export function UserAuthContextProvider({ children }) {
           // send verification mail.
           sendEmailVerification(auth.currentUser);
           logOut();
-          navigate('/login');
           setAlertSeverity('success');
           setAlertMessage('Please log in again');
           setAlertOpen(true);

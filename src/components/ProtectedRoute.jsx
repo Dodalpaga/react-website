@@ -4,7 +4,6 @@ import { useUserAuth } from '../context/UserAuthContext';
 const ProtectedRoute = ({ children }) => {
   const { user } = useUserAuth();
 
-  console.log('Check user in Private: ', user);
   if (!user || !user.emailVerified) {
     return <Navigate to="/" replace="true" />;
   }

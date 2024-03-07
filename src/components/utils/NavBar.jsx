@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import '../css/Navbar.css';
-import { Link, NavLink, useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Button } from '@mui/material';
 import { useUserAuth } from '../../context/UserAuthContext';
 
@@ -19,7 +19,7 @@ export default function Navbar() {
   };
 
   return (
-    <nav>
+    <nav className="navbar" style={{ backgroundColor: '#0f172a' }}>
       <Link to="/" className="title">
         Website
       </Link>
@@ -30,10 +30,26 @@ export default function Navbar() {
       </div>
       <ul className={menuOpen ? 'open' : ''}>
         <li>
-          <NavLink to="/home">Home</NavLink>
+          <Button
+            className="btn"
+            onClick={() => {
+              navigate('/home');
+            }}
+            variant="contained"
+          >
+            Home
+          </Button>
         </li>
         <li>
-          <NavLink to="/profile">Profile</NavLink>
+          <Button
+            className="btn"
+            onClick={() => {
+              navigate('/profile');
+            }}
+            variant="contained"
+          >
+            Profile
+          </Button>
         </li>
         <li className="logOutButtonMenu">
           <Button

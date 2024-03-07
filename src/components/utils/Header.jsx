@@ -9,11 +9,11 @@ export default function Header() {
 
   const handleSignIn = () => {
     setMenuOpen(false);
-    navigate('/signin');
+    navigate('/login');
   };
 
   return (
-    <nav style={{ position: 'fixed' }}>
+    <nav className="header" style={{ position: 'fixed' }}>
       <Link to="/" className="title">
         Website
       </Link>

@@ -15,8 +15,8 @@ function App() {
       <UserAuthContextProvider>
         <Routes>
           <Route path="/" element={<LandingPage />} />
-          <Route path="/signin" element={<SignIn />} />
-          <Route path="/signup" element={<SignUp />} />
+          <Route path="/login" element={<SignIn />} />
+          <Route path="/register" element={<SignUp />} />
           <Route
             path="/home"
             element={

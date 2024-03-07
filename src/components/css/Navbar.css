@@ -2,7 +2,7 @@
   background-color: #1d4ed8;
 }
 
-nav {
+.navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -15,11 +15,7 @@ nav {
   z-index: 1000; /* Adjust the value as needed */
 }
 
-.transparent-background {
-  background-color: transparent;
-}
-
-nav .title {
+.navbar .title {
   font-size: 1.5rem;
   margin: 1rem;
   font-weight: bold;
@@ -27,28 +23,29 @@ nav .title {
   color: white;
 }
 
-nav ul {
+.navbar ul {
   display: flex;
   padding: 0;
   margin: 0;
 }
 
-nav ul li {
+.navbar ul li {
   list-style: none;
+  margin: 0 10px;
 }
 
-nav ul li a {
+.navbar ul li a {
   display: block;
   text-decoration: none;
   color: white;
   border-radius: 0.5rem;
 }
 
-nav ul li a:not(.active):hover {
+.navbar ul li a:not(.active):hover {
   background-color: #172554;
 }
 
-nav .menu {
+.navbar .menu {
   display: none;
   position: absolute;
   top: 0.75rem;
@@ -59,46 +56,50 @@ nav .menu {
   height: 2rem;
 }
 
-nav .menu span {
+.navbar .menu span {
   height: 0.4rem;
   width: 100%;
   background-color: #fff;
   border-radius: 0.2rem;
 }
 
-nav .logOutButtonMenu {
+.navbar .logOutButtonMenu {
   display: none;
 }
 
+.navbar .logOutButton {
+  margin: 16px;
+}
+
 @media (max-width: 480px) {
-  nav .logOutButton {
+  .navbar .logOutButton {
     display: none;
   }
-  nav .logOutButtonMenu {
+  .navbar .logOutButtonMenu {
     display: block;
   }
-  nav .menu {
+  .navbar .menu {
     display: flex;
   }
 
-  nav {
+  .navbar {
     flex-direction: column;
     align-items: flex-start;
   }
 
-  nav ul {
+  .navbar ul {
     display: none;
     flex-direction: column;
     width: 100%;
     margin-bottom: 0.25rem;
   }
 
-  nav ul.open {
+  .navbar ul.open {
     background-color: #0f172a;
     display: flex;
   }
 
-  nav ul li {
+  .navbar ul li {
     width: 100%;
     text-align: center;
   }

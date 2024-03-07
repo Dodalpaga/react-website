@@ -7,7 +7,7 @@
   height: 100% !important;
 }
 
-nav {
+.header {
   display: flex;
   padding: 10px;
   background-color: transparent;
@@ -21,7 +21,7 @@ nav {
   z-index: 1000; /* Adjust the value as needed */
 }
 
-nav .title {
+.header .title {
   color: #0f172a;
   font-size: 1.5rem;
   margin: 1rem;
@@ -29,30 +29,30 @@ nav .title {
   text-decoration: none;
 }
 
-nav ul {
+.header ul {
   display: flex;
   padding: 0;
   margin: 0;
   height: 100%;
 }
 
-nav ul li {
+.header ul li {
   list-style: none;
   margin: 0 10px;
   height: 100%;
 }
 
-nav ul li a {
+.header ul li a {
   display: block;
   text-decoration: none;
   color: #f0e4e0;
 }
 
-nav ul li .btn a:hover {
+.header ul li .btn a:hover {
   background-color: #f0e4e0;
 }
 
-nav .menu {
+.header .menu {
   display: none;
   position: absolute;
   top: 0.75rem;
@@ -63,7 +63,7 @@ nav .menu {
   height: 2rem;
 }
 
-nav .menu span {
+.header .menu span {
   height: 0.4rem;
   width: 100%;
   background-color: #fff;
@@ -71,22 +71,22 @@ nav .menu span {
 }
 
 @media (max-width: 480px) {
-  nav {
+  .header {
     padding: 0;
     flex-direction: column;
     align-items: flex-start;
     background-color: #0f172a !important;
   }
 
-  nav .title {
+  .header .title {
     color: #f0e4e0;
   }
 
-  nav .menu {
+  .header .menu {
     display: flex;
   }
 
-  nav ul {
+  .header ul {
     height: auto;
 
     background-color: #0f172a; /* Set initial background color */
@@ -97,12 +97,12 @@ nav .menu span {
     transition: display 0.3s ease; /* Adjusted transition duration */
   }
 
-  nav ul.open {
+  .header ul.open {
     display: flex;
     transition: display 0.3s ease; /* Adjusted transition duration */
   }
 
-  nav ul li {
+  .header ul li {
     width: 100%;
     text-align: center;
     margin: 20px 0 !important;

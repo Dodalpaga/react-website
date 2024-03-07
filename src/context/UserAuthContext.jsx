@@ -62,7 +62,7 @@ export function UserAuthContextProvider({ children }) {
           // send verification mail.
           sendEmailVerification(auth.currentUser);
           logOut();
-          navigate('/signin');
+          navigate('/login');
           setAlertSeverity('success');
           setAlertMessage('Please log in again');
           setAlertOpen(true);

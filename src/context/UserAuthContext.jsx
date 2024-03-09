@@ -18,18 +18,17 @@ const userAuthContext = createContext();
 
 export function UserAuthContextProvider({ children }) {
   const navigate = useNavigate();
-  const [user, setUser] = useState({});
   const [alertOpen, setAlertOpen] = useState(false);
   const [alertSeverity, setAlertSeverity] = useState('error');
   const [alertMessage, setAlertMessage] = useState('');
 
-  const formatUser = (user) => {
+  const formatUser = () => {
     return {
-      uid: user.uid,
-      email: user.email,
-      name: user.displayName,
-      provider: user.providerData[0].providerId,
-      photoUrl: user.photoURL,
+      uid: auth.currentUser.uid,
+      email: auth.currentUser.email,
+      name: auth.currentUser.displayName,
+      provider: auth.currentUser.providerData[0].providerId,
+      photoUrl: auth.currentUser.photoURL,
       country: '',
       birth: '',
       bio: '',
@@ -58,12 +57,12 @@ export function UserAuthContextProvider({ children }) {
       navigate('/');
     } else {
       createUserWithEmailAndPassword(auth, email, password)
-        .then(async (response) => {
-          const user = formatUser(response.user);
-          createUser(user.uid, user);
+        .then(async () => {
+          const user = formatUser();
+          createUser(auth.currentUser.uid, user);
           try {
-            await createUser(user.uid, user);
-            await updateUser(user.uid, {
+            await createUser(auth.currentUser.uid, user);
+            await updateUser(auth.currentUser.uid, {
               name: fullName,
               birth: birth,
               country: country,
@@ -75,7 +74,7 @@ export function UserAuthContextProvider({ children }) {
           sendEmailVerification(auth.currentUser);
           logOut();
           setAlertSeverity('success');
-          setAlertMessage('Please log in again');
+          setAlertMessage('Please confirm you email...');
           setAlertOpen(true);
         })
         .catch((error) => {
@@ -99,13 +98,12 @@ export function UserAuthContextProvider({ children }) {
   function googleSignIn() {
     const googleAuthProvider = new GoogleAuthProvider();
     return signInWithPopup(auth, googleAuthProvider)
-      .then(async (result) => {
-        const user = result.user;
+      .then(async () => {
         // Extract user information from Google credential
         const userData = {
-          uid: user.uid,
-          email: user.email,
-          name: user.displayName,
+          uid: auth.currentUser.uid,
+          email: auth.currentUser.email,
+          name: auth.currentUser.displayName,
           // You can extract more information like user photoURL, etc., if needed
         };
 
@@ -121,7 +119,7 @@ export function UserAuthContextProvider({ children }) {
           country: '',
           birth: '',
           bio: '',
-          photoUrl: user.photoURL,
+          photoUrl: auth.currentUser.photoURL,
         });
 
         // send verification mail.
@@ -135,9 +133,16 @@ export function UserAuthContextProvider({ children }) {
   }
 
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (currentuser) => {
-      console.log('Auth', currentuser);
-      setUser(currentuser);
+    const unsubscribe = onAuthStateChanged(auth, async (currentUser) => {
+      console.log('Is there a login : ', currentUser);
+      if (currentUser) {
+        try {
+          // Reload user data to get the latest email verification status
+          await auth.currentUser.reload();
+        } catch (error) {
+          console.error('Error reloading user data:', error);
+        }
+      }
     });
 
     return () => {
@@ -147,9 +152,7 @@ export function UserAuthContextProvider({ children }) {
 
   return (
     <>
-      <userAuthContext.Provider
-        value={{ user, logIn, signUp, logOut, googleSignIn }}
-      >
+      <userAuthContext.Provider value={{ logIn, signUp, logOut, googleSignIn }}>
         {children}
       </userAuthContext.Provider>
       <Snackbar

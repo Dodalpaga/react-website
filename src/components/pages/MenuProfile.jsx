@@ -25,11 +25,10 @@ import EditRoundedIcon from '@mui/icons-material/EditRounded';
 import CountrySelector from '../utils/CountrySelector';
 import NavBar from '../utils/NavBar';
 import '../css/App.css';
-import { useUserAuth } from '../../context/UserAuthContext';
 import { getUser, updateUser } from '../../context/db';
+import { auth } from '../../firebase';
 
 export function MenuProfile() {
-  const { user } = useUserAuth();
   const theme = useTheme();
   const currentDate = new Date();
   const formattedDate = currentDate.toISOString().slice(0, 10);
@@ -41,9 +40,8 @@ export function MenuProfile() {
 
   async function fetchUserData() {
     try {
-      const userDataPromise = getUser(user.uid);
+      const userDataPromise = getUser(auth.currentUser.uid);
       const userData = await userDataPromise;
-      console.log('User data : ', userData);
       // Update the input fields with fetched data
       setFullName(userData.name || ''); // Set default value to empty string if userData.name is undefined
       setCountry(
@@ -72,7 +70,7 @@ export function MenuProfile() {
       birth: birthday,
     };
     console.log('Set Updated : ', data);
-    await updateUser(user.uid, data);
+    await updateUser(auth.currentUser.uid, data);
     fetchUserData();
     return;
   }
@@ -82,7 +80,7 @@ export function MenuProfile() {
       bio: bio,
     };
     console.log('Set Updated : ', data);
-    await updateUser(user.uid, data);
+    await updateUser(auth.currentUser.uid, data);
     fetchUserData();
     return;
   }
@@ -182,8 +180,8 @@ export function MenuProfile() {
                       }}
                     >
                       <img
-                        src={user.photoURL}
-                        srcSet={user.photoURL}
+                        src={auth.currentUser.photoURL}
+                        srcSet={auth.currentUser.photoURL}
                         loading="lazy"
                         alt=""
                       />

@@ -15,9 +15,10 @@ import Container from '@mui/material/Container';
 import Snackbar from '@mui/material/Snackbar';
 import Alert from '@mui/material/Alert';
 import GoogleButton from 'react-google-button';
+import { auth } from '../firebase';
 
 export default function Signin() {
-  const { user, logIn, googleSignIn } = useUserAuth();
+  const { logIn, googleSignIn } = useUserAuth();
   const navigate = useNavigate();
   const [alertOpen, setAlertOpen] = useState(false);
   const [alertSeverity, setAlertSeverity] = useState('error');
@@ -32,7 +33,10 @@ export default function Signin() {
       const password = data.get('password');
 
       await logIn(email, password);
-      if (!user.emailVerified) {
+      await auth.currentUser.reload();
+
+      if (!auth.currentUser.emailVerified) {
+        setAlertSeverity('error');
         setAlertMessage(
           'Email not validated. Please validate your email and refresh this page !'
         );
